@@ -28,3 +28,6 @@ for j=0,nz-1 do begin ;loop over z
    endfor
 endfor
 close,1
+
+The Matlab code model.m reads in the PCA data and produces output power spectrum ratios for specified coefficient values. 
+
