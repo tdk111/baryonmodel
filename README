@@ -1,0 +1,30 @@
+Baryon Model used in Kitching, Verde, Heavens, Jimenez (2016)
+
+The file PCA.dat contains the first two eigenvectors and the mean for the ratio P_baryon/P_DM
+
+the columns are 
+z,k,eigen1(k,z),eigen2(k,z), mean(k,z)
+
+so any P(k,z) would be P(k,z)=Pkdm*(mean+coeff1*eigen1+coeff2*eigen2) where coeff1 and coeff2 are free parameters; their priors should go from -1 to 1 if we one requires corrections not larger than what is in the suite of the input sims from OWLS. To also allow the flexibility to fit the Illustris simulations the functional form used was 
+
+P(k,z)=Pkdm*[1.+(mean-1)*coeff1+eigen1*coeff2]
+
+where coeff1 and coeff2 are free parameters.
+
+If one wants to use all the components then the file is PCAall.dat
+
+PCAall.dat was written like this(same structure as above but now with 9 PCA's). In Fortran 90 the code to do the writing is below.
+
+count=0
+eigen=fltarr(nz,nkk,9)
+meancorr=fltarr(nz,nkk)
+openw,1,'PCAall.dat'
+for j=0,nz-1 do begin ;loop over z
+   for i=0,nkk-1 do begin
+      eigen(j,i,*)=evec(count,*)
+      meancorr(j,i)=mean(count)
+      printf,1,zz(j),k(i),evec(count,0),evec(count,1),evec(count,2),evec(count,3), evec(count,4),evec(count,5),evec(count,6), evec(count,7),evec(count,8), mean(count)
+     count=count+1 
+   endfor
+endfor
+close,1
