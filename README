@@ -5,7 +5,7 @@ The file PCA.dat contains the first two eigenvectors and the mean for the ratio 
 the columns are 
 z,k,eigen1(k,z),eigen2(k,z), mean(k,z)
 
-so any P(k,z) would be P(k,z)=Pkdm*(mean+coeff1*eigen1+coeff2*eigen2) where coeff1 and coeff2 are free parameters; their priors should go from -1 to 1 if we one requires corrections not larger than what is in the suite of the input sims from OWLS. To also allow the flexibility to fit the Illustris simulations the functional form used was 
+so any P(k,z) would be P(k,z)=Pkdm*(mean+coeff1*eigen1+coeff2*eigen2) where coeff1 and coeff2 are free parameters; their priors should go from -1 to 1 if we one requires corrections not larger than what is in the suite of the input sims from OWLS. To also allow the flexibility to fit the Illustris simulations the functional form used in the paper was 
 
 P(k,z)=Pkdm*[1.+(mean-1)*coeff1+eigen1*coeff2]
 
